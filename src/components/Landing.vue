@@ -6,15 +6,28 @@
           <li>Offer</li>
           <li>Recomended</li>
         </ul>-->
-        <Hooper :itemsToShow="4" :infiniteScroll="true">
-          <Slide>Offer</Slide>
-          <Slide>Recomended</Slide>
-          <Slide>Food</Slide>
-          <Slide>Drink</Slide>
-          <Slide>Desert</Slide>
-          <Slide>Breakfast</Slide>
-          <Slide>Snacks</Slide>
-          <Slide>Others</Slide>
+        <Hooper :itemsToShow="6.2" class="mhopper">
+          <Slide>
+            <v-btn @click="$vuetify.goTo('#dinner')" class="cat-btn">Recomended</v-btn>
+          </Slide>
+          <Slide>
+            <v-btn @click="$vuetify.goTo('#Breakfast',options)" class="cat-btn">Food</v-btn>
+          </Slide>
+          <Slide>
+            <v-btn @click="$vuetify.goTo('#dinner')" class="cat-btn">Drink</v-btn>
+          </Slide>
+          <Slide>
+            <v-btn @click="$vuetify.goTo('#dinner')" class="cat-btn">Desert</v-btn>
+          </Slide>
+          <Slide>
+            <v-btn @click="$vuetify.goTo('#dinner')" class="cat-btn">Breakfast</v-btn>
+          </Slide>
+          <Slide>
+            <v-btn @click="$vuetify.goTo('#dinner')" class="cat-btn">Snacks</v-btn>
+          </Slide>
+          <Slide>
+            <v-btn @click="$vuetify.goTo('#dinner')" class="cat-btn">Others</v-btn>
+          </Slide>
         </Hooper>
       </v-col>
 
@@ -29,29 +42,29 @@
               style=" padding-left: 0px !important;"
             >
               <span class="item-price">150TK</span>
-              <v-img src="https://picsum.photos/180/110?random" class="rounded-lg"></v-img>
+              <v-img
+                src="https://picsum.photos/180/110?random"
+                class="rounded-lg"
+                @click="dialog = true"
+              ></v-img>
               <span class="float-left item-name">Special Burger</span>
               <span class="float-right item-make-time">
                 <v-btn depressed small style="background-color: #fff !importnat">
-                  <v-icon color="warning" style="font-size: 18px">alarm</v-icon>5 min
+                  <v-icon color="primary" style="font-size: 18px">alarm</v-icon>5 min
                 </v-btn>
               </span>
             </Slide>
           </Hooper>
           <!-- </v-col> -->
         </v-row>
-        <v-row>
-          <v-col cols="12" class="px-3">
-            <v-img
-              src="https://s3.envato.com/files/180255636/jpg/720x300_Pop_Under.jpg"
-              class="rounded-lg offer-banner"
-            ></v-img>
-          </v-col>
-        </v-row>
-        <v-row>
+
+        <Promotion></Promotion>
+
+        <v-row class="mb-2">
           <h4
             style="border-top: 1px solid rgb(247 247 247);width: 100%;font-weight: 400;font-size: 15px;"
-            class="text-left mx-4" color="warning"
+            class="text-left mx-4 py-1"
+            color="primary"
           >Lunch</h4>
           <Hooper :itemsToShow="2">
             <Slide
@@ -65,17 +78,18 @@
               <span class="float-left item-name">Special Burger</span>
               <span class="float-right item-make-time">
                 <v-btn depressed small style="background-color: #fff !importnat">
-                  <v-icon color="warning" style="font-size: 18px">alarm</v-icon>5 min
+                  <v-icon color="primary" style="font-size: 18px">alarm</v-icon>5 min
                 </v-btn>
               </span>
             </Slide>
           </Hooper>
           <!-- </v-col> -->
         </v-row>
-        <v-row>
+        <v-row class="mb-2" id="Breakfast">
           <h4
             style="border-top: 1px solid rgb(247 247 247);width: 100%;font-weight: 400;font-size: 15px;"
-            class="text-left mx-4" color="warning"
+            class="text-left mx-4 py-1"
+            color="primary"
           >Breakfast</h4>
           <Hooper :itemsToShow="2">
             <Slide
@@ -89,17 +103,18 @@
               <span class="float-left item-name">Special Burger</span>
               <span class="float-right item-make-time">
                 <v-btn depressed small style="background-color: #fff !importnat">
-                  <v-icon color="warning" style="font-size: 18px">alarm</v-icon>5 min
+                  <v-icon color="primary" style="font-size: 18px">alarm</v-icon>5 min
                 </v-btn>
               </span>
             </Slide>
           </Hooper>
           <!-- </v-col> -->
         </v-row>
-        <v-row>
+        <v-row class="mb-6" id="dinner">
           <h4
             style="border-top: 1px solid rgb(247 247 247);width: 100%;font-weight: 400;font-size: 15px;"
-            class="text-left mx-4" color="warning"
+            class="text-left mx-4 py-1"
+            color="primary"
           >Dinner</h4>
           <Hooper :itemsToShow="2">
             <Slide
@@ -113,7 +128,7 @@
               <span class="float-left item-name">Special Burger</span>
               <span class="float-right item-make-time">
                 <v-btn depressed small style="background-color: #fff !importnat">
-                  <v-icon color="warning" style="font-size: 18px">alarm</v-icon>5 min
+                  <v-icon color="primary" style="font-size: 18px">alarm</v-icon>5 min
                 </v-btn>
               </span>
             </Slide>
@@ -122,19 +137,37 @@
         </v-row>
       </v-col>
     </v-row>
+    <v-dialog v-model="dialog" width="500">
+      <ItemDetails></ItemDetails>
+    </v-dialog>
   </v-container>
 </template>
 
 <script>
 import { Hooper, Slide } from "hooper";
 import "hooper/dist/hooper.css";
+import ItemDetails from "./ItemDetails";
+import Promotion from "./Promotion";
 export default {
   name: "HelloWorld",
   components: {
     Hooper,
     Slide,
+    ItemDetails,
+    Promotion,
   },
-  data: () => ({}),
+  data: () => ({
+    dialog: false,
+  }),
+  computed: {
+    options() {
+      return {
+        duration: 300,
+        offset: 10,
+        easing: "easeInQuart",
+      };
+    },
+  },
 };
 </script>
 
@@ -167,7 +200,7 @@ li.hooper-slide:focus {
 .item-price {
   position: absolute;
   z-index: 99;
-  background-color: #fb8c00;
+  background-color: #f8b843;
   text-align: center;
   margin-left: 22px;
   padding: 0px 4px;
@@ -193,5 +226,13 @@ li.hooper-slide:focus {
 
 .offer-banner {
   border: 1px solid #ddd;
+}
+.iteam-details-carousel {
+  height: auto !important;
+}
+.cat-btn {
+  background-color: transparent !important;
+  height: 0 !important;
+  padding: 0 !important;
 }
 </style>

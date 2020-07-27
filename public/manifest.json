@@ -1,0 +1,32 @@
+{
+    "name": "ihost",
+    "short_name": "ihost",
+    "theme_color": "#f8b843",
+    "icons": [
+        {
+            "src": "./img/icons/ihosticon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./img/icons/ihosticon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "./img/icons/ihosticon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "./img/icons/ihosticon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#f8b843"
+}

@@ -1,52 +1,56 @@
 <template>
   <v-app>
-    <v-app-bar fixed color="white" elevation="0" class="top-bar" style="border-bottom: 1px solid #ddd !important;">
-      <v-app-bar-nav-icon color="warning"></v-app-bar-nav-icon>
+    <v-app-bar
+      fixed
+      color="white"
+      elevation="0"
+      class="top-bar"
+      style="border-bottom: 1px solid #ddd !important;"
+    >
+      <v-app-bar-nav-icon color="primary"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Momo's Cafe</v-toolbar-title>
+      <v-toolbar-title>
+        <!-- <v-img src="./assets/logo.png" aspect-ratio="10.4"></v-img> -->
+        <img src="./assets/logo.png" style="width:50%" alt /> 
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn small color="warning" depressed>Table 2</v-btn>
+      <v-btn small color="primary" depressed>Table 2</v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld />
+      <router-view></router-view>
     </v-main>
 
     <v-bottom-navigation fixed v-model="bottomNav">
       <v-btn value="recent">
-        <v-icon color="warning">home</v-icon>
+        <v-icon color="primary">home</v-icon>
       </v-btn>
       <v-btn value="favorites">
-        <v-icon color="warning">favorite</v-icon>
+        <v-icon color="primary">favorite</v-icon>
       </v-btn>
       <v-btn value="nearby">
-        <v-icon color="warning">shopping_cart</v-icon>
+        <v-icon color="primary">shopping_cart</v-icon>
       </v-btn>
       <v-btn value="suuport">
-        <v-icon color="warning">support_agent</v-icon>
+        <v-icon color="primary">support_agent</v-icon>
       </v-btn>
       <v-btn value="time">
-        <v-icon color="warning">query_builder</v-icon>
+        <v-icon color="primary">query_builder</v-icon>
       </v-btn>
       <v-btn value="notification">
-        <v-icon color="warning">notifications_active</v-icon>
+        <v-icon color="primary">notifications_active</v-icon>
       </v-btn>
     </v-bottom-navigation>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+
 
 export default {
   name: "App",
-
-  components: {
-    HelloWorld,
-  },
-
   data: () => ({
     bottomNav: 3,
   }),
@@ -75,4 +79,8 @@ export default {
   background-color: #fff !important;
 }
 
+.v-application ul,
+.v-application ol {
+  padding-left: 13px !important;
+}
 </style>
