@@ -28,5 +28,5 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#f8b843"
+    "background_color": "#000"
 }
