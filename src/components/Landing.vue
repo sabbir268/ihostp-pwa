@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="text-center">
-      <v-col class="mb-4 mt-11 top-menu">
+      <v-col class="mb-0 mt-11 top-menu">
         <!-- <ul>
           <li>Offer</li>
           <li>Recomended</li>
@@ -32,8 +32,15 @@
       </v-col>
 
       <v-col class="mb-5" cols="12">
+        <Promotion></Promotion>
+
         <v-row justify="center">
           <!-- <v-col v-for="i in 6" :key="i" cols="6" elevation="2"> -->
+          <h4
+            style="border-top: 1px solid rgb(247 247 247);width: 100%;font-weight: 400;font-size: 15px;"
+            class="text-left mx-4 py-1"
+            color="primary"
+          >Recomended</h4>
           <Hooper :itemsToShow="2">
             <Slide
               v-for="i in 6"
@@ -57,8 +64,6 @@
           </Hooper>
           <!-- </v-col> -->
         </v-row>
-
-        <Promotion></Promotion>
 
         <v-row class="mb-2">
           <h4
@@ -148,6 +153,10 @@ import { Hooper, Slide } from "hooper";
 import "hooper/dist/hooper.css";
 import ItemDetails from "./ItemDetails";
 import Promotion from "./Promotion";
+
+// import { axiosInstance as axios } from "../axiosInstance";
+import axios from "../axiosInstance";
+
 export default {
   name: "HelloWorld",
   components: {
@@ -167,6 +176,21 @@ export default {
         easing: "easeInQuart",
       };
     },
+  },
+  methods: {
+    getFoods() {
+      axios
+        .get("get-all-foods/11")
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  created() {
+    this.getFoods();
   },
 };
 </script>

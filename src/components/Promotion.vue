@@ -1,5 +1,5 @@
 <template>
-  <v-row>
+  <v-row justify="center">
     <Hooper class="mhopper">
       <Slide>
         <v-col cols="12" class="px-3">
@@ -36,4 +36,7 @@ export default {
 };
 </script>
 <style  scoped>
+.hooper{
+  height: auto;
+}
 </style>
